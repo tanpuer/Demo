@@ -4,6 +4,7 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
+import TimerMixin from 'react-timer-mixin';
 
 export default class MyTimer extends Component {
     // 构造
@@ -20,15 +21,14 @@ export default class MyTimer extends Component {
                 if(this.state.minute === -1){
                     this.setState({minute:59,hour:this.state.hour-1})
                 }
-            }else {
+            }else{
                 this.setState({second:this.state.second-1});
             }
         }, 1000);
     }
 
-
     componentWillUnMount() {
-        this.interval && this.clearInterval(this.interval);
+        this.interval && clearInterval(this.interval);
     }
 
     render() {

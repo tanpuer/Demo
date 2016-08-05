@@ -55,7 +55,9 @@ export default class Article extends Component{
             );
         }else {
             return(
-              <Text>123</Text>
+              <View style={{alignItems:'center',justifyContent:'center'}}>
+                  <Text>网络好像不好啊</Text>
+              </View>
             );
         }
 

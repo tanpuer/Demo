@@ -21,6 +21,10 @@ export default class Circle extends Component{
          this.interval = setInterval(this.onAnimation,2500);
     }
 
+    componentWillUnMount() {
+        this.interval && clearInterval(this.interval);
+    }
+
     onAnimation(){
         //动画执行一次后fade变为101,下次就不执行,提前变为0,
         this.setState({fade: new Animated.Value(0),fade1: new Animated.Value(0),
@@ -38,6 +42,7 @@ export default class Circle extends Component{
                 toValue:101,
                 duration:500,
             }),
+
             Animated.timing(this.state.fade3,{
                 toValue:101,
                 duration:500,

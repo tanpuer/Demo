@@ -7,9 +7,12 @@
   },
   "dependencies": {
     "react": "15.2.1",
-    "react-native": "0.29.1",
+    "react-native": "0.30.0",
     "react-native-drawer-layout": "^1.0.0",
+    "react-native-progress": "^3.0.1",
     "react-native-scrollable-tab-view": "^0.5.3",
-    "react-timer-mixin": "^0.13.3"
+    "react-native-svg": "^4.0.0-rc",
+    "react-timer-mixin": "^0.13.3",
+    "realm": "^0.14.1"
   }
 }

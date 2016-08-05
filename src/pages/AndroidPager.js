@@ -123,10 +123,6 @@ const styles = StyleSheet.create({
     text:{
         fontSize:16,
     },
-    refresh:{
-        height:40,
-        marginTop:-40,
-    },
 });
 
 

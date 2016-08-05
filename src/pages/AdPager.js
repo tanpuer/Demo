@@ -11,6 +11,7 @@ import {
     Image,
 } from 'react-native';
 import MyTimer from '../component/MyTimer';
+import MyToolBar from '../component/HomeToolBar';
 
 class Ads extends Component {
     // 构造
@@ -21,8 +22,17 @@ class Ads extends Component {
     }
 
     render() {
+        const{navigator} = this.props;
         return (
             <View style={[styles.container,styles.column]}>
+                <MyToolBar source={require('../png/icon_left.png')}
+                           title="首页"
+                           onPress={()=>{
+                               if(navigator){
+                                   navigator.pop();
+                               }
+                           }}
+                />
                 <View style={[styles.view1,styles.row,{marginBottom:10}]}>
 
                     <View style={[styles.view11,styles.borderright]}>

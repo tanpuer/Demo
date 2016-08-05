@@ -14,6 +14,7 @@ import Home from '../menu/Home';
 import Favorite from '../menu/Favorite';
 import Suggestion from '../menu/Suggestion';
 import About from '../menu/About';
+import Blog from '../pages/Blog';
 
 const drawerWidth = Dimensions.get('window').width / 5 * 4;
 
@@ -58,7 +59,7 @@ class Main extends Component{
                 InteractionManager.runAfterInteractions(() => {
                     if(navigator){
                         navigator.push({
-                            component:Home,
+                            component:Ad,
                             name:"主页",
                         });
                     }
@@ -131,7 +132,7 @@ class Main extends Component{
                     >
                         <Android tabLabel = "知乎热门" navigator={this.props.navigator}/>
                         <RN tabLabel = "Android学习"/>
-                        <Ad tabLabel = "我的分享"/>
+                        <Blog tabLabel = "我的博客"/>
                     </ScrollTabView>
                 </View>
             </DrawerLayout>

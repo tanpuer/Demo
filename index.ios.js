@@ -25,3 +25,5 @@ class Demo extends Component{
 }
 
 AppRegistry.registerComponent('Demo',() => Demo);
+
+//react-native run-ios --simulator="iPhone 5s"

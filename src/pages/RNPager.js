@@ -11,25 +11,30 @@ import {
 } from 'react-native';
 import MyTimer from '../component/MyTimer';
 import MyCircle from '../animation/XiuyiXiu';
+import MealTicket from '../CustomizedCom/MealTicket';
+import MusicPan from '../animation/MusicPan';
+import WaitingForLunch from '../animation/WaitingForLunch';
 
 export default class RNPager extends Component{
     render(){
         return(
-            <View style={styles.container}>
-                <ScrollView style={{flex:1, margin:10,}} showsVerticalScrollIndicator={true}>
-                    <MyTimer/>
+                <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={true}>
+                    <MyTimer />
                     <MyCircle/>
+                    <MealTicket/>
+                    <MusicPan/>
+                    <WaitingForLunch />
+
                 </ScrollView>
-            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
    container:{
-       height:800,
-       justifyContent:'center',
+       height:1000,
        alignItems:'center',
        backgroundColor:'wheat',
+       flexDirection:'column',
    },
 });
