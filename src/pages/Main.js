@@ -36,8 +36,8 @@ class Main extends Component{
                   style={{width:drawerWidth,height:drawerWidth-100}}
                   source={require('../png/drawer.jpg')}
               />
-              <Menu source={require('../png/menu.png')} title="首页" onPress={()=> {this.onClick(1)}}/>
-              <Menu source={require('../png/share.png')} title="我的收藏" onPress={()=> {this.onClick(2)}}/>
+              <Menu source={require('../png/menu.png')} title="redux练习2" onPress={()=> {this.onClick(1)}}/>
+              <Menu source={require('../png/share.png')} title="redux练习1" onPress={()=> {this.onClick(2)}}/>
               <Menu source={require('../png/settings.png')} title="建议" onPress={()=> {this.onClick(3)}}/>
               <Menu source={require('../png/info.png')} title="关于" onPress={()=> {this.onClick(4)}}/>
           </View>
@@ -71,7 +71,7 @@ class Main extends Component{
                     if(navigator){
                         navigator.push({
                             component:Favorite,
-                            name:"收藏",
+                            name:"redux练习",
                         });
                     }
                 });
