@@ -47,7 +47,6 @@ export default class AndroidPager extends Component{
     }
 
     renderMovies(rowData){
-
         return(
           <TouchableOpacity
               onPress={()=>{

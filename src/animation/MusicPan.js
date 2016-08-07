@@ -43,7 +43,7 @@ export default class MusicPan extends Component{
                 <Animated.Image
                     source={require('../png/flag.png')}
                     style={{
-                        width: 150, height: 50,transform:[{}]
+                        width: 150, height: 50,transform:[{rotate:spin}]
 
                     }}
                 >
