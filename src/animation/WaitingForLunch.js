@@ -31,7 +31,7 @@ export default class WaitingForLunch extends Component{
         Animated.parallel([
             Animated.sequence([
                 Animated.timing(this.state.anim,{
-                    toValue:100,
+                    toValue:50,
                     duration:1000,
                     easing:Easing.easeInEaseOut,
                 }),
