@@ -3,6 +3,7 @@
  */
 import React, {Component} from 'react';
 import {View, StyleSheet, Animated,} from 'react-native';
+import ToolBar from '../component/HomeToolBar';
 
 const array = ['rgb(0, 0, 153)','rgb(0, 0, 255)','rgb(51, 51, 255)','rgb(102, 102, 255)','rgb(153, 153, 255)','rgb(204, 204, 255)'];
 const radius = 200;
@@ -15,6 +16,7 @@ export default class Circle extends Component{
             fade2: new Animated.Value(0),fade3: new Animated.Value(0),fade4: new Animated.Value(0),
         };
         this.onAnimation = this.onAnimation.bind(this);
+          this.onPress = this.onPress.bind(this);
       }
 
     componentDidMount() {
@@ -23,6 +25,12 @@ export default class Circle extends Component{
 
     componentWillUnMount() {
         this.interval && clearInterval(this.interval);
+    }
+
+    onPress(){
+        this.interval && clearInterval(this.interval);
+        const {navigator} = this.props;
+        navigator.pop();
     }
 
     onAnimation(){
@@ -59,52 +67,55 @@ export default class Circle extends Component{
 
       render(){
           return(
-            <View style={{width:radius,height:radius,justifyContent:'center',alignItems:'center',}}>
-                <Animated.View
-                    style={[styles.circle,{width:radius,height:radius,borderRadius:radius/2,
-                        borderColor:this.state.fade4.interpolate({
-                            inputRange: [0,100,101],
-                            outputRange:[array[4], array[5],array[4]],
-                        })}]}
-                >
+            <View style={{flex:1,}}>
+                <ToolBar source={require('../png/icon_left.png')} title="咻一咻" onPress={this.onPress}/>
+                <View style={styles.container}>
                     <Animated.View
-                        style={[styles.circle,{width:radius*0.8,height:radius*0.8,borderRadius:radius*0.8/2,
-                            borderColor:this.state.fade3.interpolate({
+                        style={[styles.circle,{width:radius,height:radius,borderRadius:radius/2,
+                            borderColor:this.state.fade4.interpolate({
                                 inputRange: [0,100,101],
-                                outputRange:[array[3], array[4],array[3]],
+                                outputRange:[array[4], array[5],array[4]],
                             })}]}
                     >
                         <Animated.View
-                            style={[styles.circle,{width:radius*0.6,height:radius*0.6,borderRadius:radius*0.6/2,
-                                borderColor:this.state.fade2.interpolate({
+                            style={[styles.circle,{width:radius*0.8,height:radius*0.8,borderRadius:radius*0.8/2,
+                                borderColor:this.state.fade3.interpolate({
                                     inputRange: [0,100,101],
-                                    outputRange:[array[2], array[3],array[2]],
+                                    outputRange:[array[3], array[4],array[3]],
                                 })}]}
                         >
                             <Animated.View
-                                style={[styles.circle,{width:radius*0.4,height:radius*0.4,borderRadius:radius*0.4/2,
-                                    borderColor:this.state.fade1.interpolate({
+                                style={[styles.circle,{width:radius*0.6,height:radius*0.6,borderRadius:radius*0.6/2,
+                                    borderColor:this.state.fade2.interpolate({
                                         inputRange: [0,100,101],
-                                        outputRange:[array[1], array[2],array[1]],
+                                        outputRange:[array[2], array[3],array[2]],
                                     })}]}
                             >
                                 <Animated.View
-                                    style={[styles.circle,{width:radius*0.2,height:radius*0.2,borderRadius:radius*0.2/2,
-                                    borderColor:this.state.fade.interpolate({
-                                        inputRange: [0,100,101],
-                                        outputRange:[array[0], array[1],array[0]],
-                                    })}]}
+                                    style={[styles.circle,{width:radius*0.4,height:radius*0.4,borderRadius:radius*0.4/2,
+                                        borderColor:this.state.fade1.interpolate({
+                                            inputRange: [0,100,101],
+                                            outputRange:[array[1], array[2],array[1]],
+                                        })}]}
                                 >
+                                    <Animated.View
+                                        style={[styles.circle,{width:radius*0.2,height:radius*0.2,borderRadius:radius*0.2/2,
+                                            borderColor:this.state.fade.interpolate({
+                                                inputRange: [0,100,101],
+                                                outputRange:[array[0], array[1],array[0]],
+                                            })}]}
+                                    >
+                                    </Animated.View>
+
                                 </Animated.View>
 
                             </Animated.View>
 
                         </Animated.View>
-
                     </Animated.View>
-                </Animated.View>
 
 
+                </View>
             </View>
           );
       }
@@ -116,5 +127,10 @@ const styles = StyleSheet.create({
         alignItems:'center',
         borderColor:'red',
         borderWidth:radius/10,
+    },
+    container:{
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center',
     },
 });

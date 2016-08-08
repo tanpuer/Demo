@@ -6,7 +6,6 @@ import {View, Text, Dimensions, Platform, DrawerLayoutAndroid, Image, Interactio
 import DrawerLayout from 'react-native-drawer-layout';
 import ScrollTabView ,{DefaultTabBar}from 'react-native-scrollable-tab-view';
 import Android from '../pages/AndroidPager';
-import RN from '../pages/RNPager';
 import Ad from '../pages/AdPager';
 import HomeToolBar from '../component/HomeToolBar';
 import Menu from '../component/DrawerMenu';
@@ -131,7 +130,7 @@ class Main extends Component{
                         navigator = {navigator}
                     >
                         <Android tabLabel = "知乎热门" navigator={this.props.navigator}/>
-                        <RN tabLabel = "自定义练习"/>
+
                         <Blog tabLabel = "我的博客"/>
                         <TableView tabLabel="RN小项目" navigator={this.props.navigator}/>
 

@@ -3,19 +3,20 @@
  */
 import React,{Component} from 'react';
 import {Image, View, StyleSheet, Animated, Easing} from 'react-native';
-import Oven from '../component/Oven';
-import TimerMixin from 'react-timer-mixin';
+import ToolBar from '../component/HomeToolBar';
 
 
 
-export default class WaitingForLunch extends Component{
+export default class WaitingForLunch extends
+    Component{
     // 构造
       constructor(props) {
         super(props);
         // 初始状态
           //切记  动画值都要用 Animated.Value....
-        this.state = {anim:new Animated.Value(0),radius:new Animated.Value(16),source:true};
+        this.state = {anim:new Animated.Value(0),radius:new Animated.Value(32),source:true};
         this.onAnimation = this.onAnimation.bind(this);
+          this.onPress = this.onPress.bind(this);
       }
 
     componentDidMount() {
@@ -26,8 +27,14 @@ export default class WaitingForLunch extends Component{
         this.interval && clearInterval(this.interval);
     }
 
+    onPress(){
+        this.interval && clearInterval(this.interval);
+        const {navigator} = this.props;
+        navigator.pop();
+    }
+
     onAnimation() {
-        this.setState({anim:new Animated.Value(0),radius:new Animated.Value(16),source:!this.state.source});
+        this.setState({anim:new Animated.Value(0),radius:new Animated.Value(32),source:!this.state.source});
         Animated.parallel([
             Animated.sequence([
                 Animated.timing(this.state.anim,{
@@ -44,11 +51,11 @@ export default class WaitingForLunch extends Component{
             ]),
             Animated.sequence([
                 Animated.timing(this.state.radius,{
-                    toValue:8,
+                    toValue:16,
                     duration:1000,
                 }),
                 Animated.timing(this.state.radius,{
-                    toValue:16,
+                    toValue:32,
                     duration:1000,
                 }),
             ]),
@@ -56,28 +63,30 @@ export default class WaitingForLunch extends Component{
     }
 
       render(){
-
           return(
-              <View>
-                  <Animated.View
-                      style={[styles.apple,{bottom:this.state.anim}]}
-                  >
-                      <Image
-                          style={{width:50,height:50}}
-                          source={this.state.source? require('../png/lizi.png'):require('../png/pingguo.png')}
-                      />
-                  </Animated.View>
-                  <View style={{width:50,alignItems:'center'}}>
+              <View style={{flex:1,}}>
+                  <ToolBar source={require('../png/icon_left.png')} title="等餐" onPress={this.onPress}/>
+                  <View style={styles.container}>
                       <Animated.View
-                      style={{
-                          width: this.state.radius,
-                          height: this.state.radius,
-                          borderRadius: 8,
-                          backgroundColor: 'gray',
-                          transform: [
-                              {scaleX: 3}
-                          ]}}>
+                          style={[styles.apple,{bottom:this.state.anim}]}
+                      >
+                          <Image
+                              style={{width:50,height:50}}
+                              source={this.state.source? require('../png/lizi.png'):require('../png/pingguo.png')}
+                          />
                       </Animated.View>
+                      <View style={{width:50,alignItems:'center'}}>
+                          <Animated.View
+                              style={{
+                                  width: this.state.radius,
+                                  height: this.state.radius,
+                                  borderRadius: 16,
+                                  backgroundColor: 'lightgray',
+                                  transform: [
+                                      {scaleX: 2}
+                                  ]}}>
+                          </Animated.View>
+                      </View>
                   </View>
               </View>
 
@@ -95,5 +104,10 @@ const styles = StyleSheet.create({
    },
     shadow:{
 
+    },
+    container:{
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center',
     },
 });
