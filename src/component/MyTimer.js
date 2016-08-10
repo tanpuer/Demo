@@ -61,7 +61,7 @@ export default class MyTimer extends Component {
                             style={{marginTop:50,}}
                             onPress={this.simulatePost}
                         >
-                            模拟网络请求,根据时间戳倒计时
+                            模拟网络请求,倒计时
                         </Text>
                     </TouchableOpacity>
                 </View>

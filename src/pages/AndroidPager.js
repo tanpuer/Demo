@@ -9,6 +9,7 @@ import {
     ListView,
     Image,
     TouchableOpacity,
+    ActivityIndicator,
 } from 'react-native';
 import Article from '../pages/Article';
 
@@ -81,6 +82,7 @@ export default class AndroidPager extends Component{
           if (!this.state.isLoaded){
               return(
                 <View style={styles.des}>
+                    <ActivityIndicator color="darkgoldenrod"/>
                     <Text>加载中。。。</Text>
                 </View>
               );

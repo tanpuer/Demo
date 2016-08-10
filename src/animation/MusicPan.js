@@ -14,6 +14,7 @@ import {Image,
 import ToolBar from '../component/HomeToolBar';
 
 var iSMusicGo = true;
+var cycleTime = 100000;
 export default class MusicPan extends Component{
     // 构造
       constructor(props) {
@@ -23,16 +24,17 @@ export default class MusicPan extends Component{
         this.onAnimation = this.onAnimation.bind(this);
           this.onPress = this.onPress.bind(this);
           this.onClick = this.onClick.bind(this);
+          this.callback = this.callback.bind(this);
       }
 
     onAnimation(){
-        this.state.spin.setValue(0);
+        console.log("cycleTime:" + cycleTime);
         var animation = Animated.timing(this.state.spin,{
             toValue:1,
-            duration:10000,
-            easing:Easing.linear
+            duration:cycleTime,
+            easing:Easing.linear,
         });
-        animation.start(()=>{this.onAnimation()});
+        animation.start();
     }
 
     onPress(){
@@ -43,19 +45,36 @@ export default class MusicPan extends Component{
     onClick() {
         this.setState({flagSpin:new Animated.Value(0)});
         //注意InteractionManager的用法
-        InteractionManager.runAfterInteractions(()=>{
+        InteractionManager.runAfterInteractions(()=> {
             Animated.timing(this.state.flagSpin, {
                 toValue: 1,
                 duration: 1000,
             }).start();
+            iSMusicGo && this.onAnimation();
+            !iSMusicGo && this.state.spin.stopAnimation((value)=>{
+                console.log(value);
+                this.callback(value);
+            });
             iSMusicGo = !iSMusicGo;
         });
+    }
+
+
+    //每次暂停后修改spin和cycletime ,确保每次的转速一致。 转盘不能无限转,只能转设定的圈数
+    callback(value){
+        if(value<=0.99){
+            cycleTime = 100000 * (1-value);
+            this.setState({spin:new Animated.Value(value)});
+        }else {
+            cycleTime = 100000;
+            this.setState({spin:new Animated.Value(0)});
+        }
     }
 
       render(){
           var spin = this.state.spin.interpolate({
               inputRange:[0,1],
-              outputRange:['0deg','360deg'],
+              outputRange:['0deg','3600deg'],
           });
           var flagSpin = iSMusicGo? this.state.flagSpin.interpolate({
               inputRange:[0,1],

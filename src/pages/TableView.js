@@ -9,12 +9,16 @@ import XiuyiXiu from '../animation/XiuyiXiu';
 import MealTicket from '../CustomizedCom/MealTicket';
 import Waiting from '../animation/WaitingForLunch';
 import Music from '../animation/MusicPan';
+import Gesture from '../animation/Responder';
+import IOSUI from '../component/Iosui';
 
 const masterWork = [[1,"倒计时",require('../png/screenshots/timer.png'),Timer,"计时器"],
                     [2,"咻一咻",require('../png/screenshots/xiuyixiu.png'),XiuyiXiu,"咻一咻"],
                     [3,"粮票",require('../png/screenshots/mealticket.png',"粮票"),MealTicket],
                     [4,"等餐",require('../png/screenshots/wait.png'),Waiting,"等餐"],
-                    [5,"音乐",require('../png/screenshots/music_pan.png'),Music,"音乐"],
+                    [5,"手势",require('../png/screenshots/gesture.png'),Gesture,"手势"],
+                    [6,"音乐",require('../png/screenshots/music_pan.png'),Music,"音乐"],
+                    [7,"导航",require('../png/screenshots/tabnavigtor.png'),IOSUI,"IOS"],
 
 ];
 
