@@ -29,6 +29,8 @@ export default class MyTimer extends Component {
         }, 1000);
     }
 
+
+
     componentWillUnMount() {
         this.interval && clearInterval(this.interval);
         this.interval = false;

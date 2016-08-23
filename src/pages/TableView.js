@@ -11,6 +11,7 @@ import Waiting from '../animation/WaitingForLunch';
 import Music from '../animation/MusicPan';
 import Gesture from '../animation/Responder';
 import IOSUI from '../component/Iosui';
+import Mianshi from '../mianshi/mianshi';
 
 const masterWork = [[1,"倒计时",require('../png/screenshots/timer.png'),Timer,"计时器"],
                     [2,"咻一咻",require('../png/screenshots/xiuyixiu.png'),XiuyiXiu,"咻一咻"],
@@ -19,7 +20,7 @@ const masterWork = [[1,"倒计时",require('../png/screenshots/timer.png'),Timer
                     [5,"手势",require('../png/screenshots/gesture.png'),Gesture,"手势"],
                     [6,"音乐",require('../png/screenshots/music_pan.png'),Music,"音乐"],
                     [7,"导航",require('../png/screenshots/tabnavigtor.png'),IOSUI,"IOS"],
-
+                    [8,"导航",require('../png/screenshots/tabnavigtor.png'),Mianshi,"IOS"],
 ];
 
 export default class TableView extends Component{
