@@ -67,6 +67,10 @@ export default class More extends Component{
                                   {rowData.name}
                               </Text>
                           </View>
+                          <Image
+                            style={{width:20,height:20,right:20,}}
+                            source={require('../../png/yinguo/arrow.png')}
+                          />
                       </View>
                   </TouchableOpacity>
               );
