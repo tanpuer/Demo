@@ -21,7 +21,7 @@ export default class Iosui extends Component{
         super(props);
         // 初始状态
           this.state = {
-              selectedTab: tabBarItems[0].title,
+              selectedTab: tabBarItems[2].title,
           };
       }
 
@@ -37,7 +37,7 @@ export default class Iosui extends Component{
 
     render() {
         return (
-            <TabNavigator tabBarStyle={{ height: 55,backgroundColor:'bisque'}}
+            <TabNavigator tabBarStyle={{ height: 55,backgroundColor:'whitesmoke'}}
                           allowFontScaling={false}
             >
                 {
