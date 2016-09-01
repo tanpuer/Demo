@@ -18,7 +18,7 @@ const masterWork = [[1,"倒计时",require('../png/screenshots/timer.png'),Timer
                     [4,"等餐",require('../png/screenshots/wait.png'),Waiting,"等餐"],
                     [5,"手势",require('../png/screenshots/gesture.png'),Gesture,"手势"],
                     [6,"音乐",require('../png/screenshots/music_pan.png'),Music,"音乐"],
-                    [7,"导航",require('../png/screenshots/tabnavigtor.png'),IOSUI,"IOS"],
+                    [7,"因果",require('../png/yinguo/eengoo.png'),IOSUI,"IOS"],
 ];
 
 export default class TableView extends Component{
