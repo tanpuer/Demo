@@ -174,6 +174,7 @@ export default class More extends Component{
       }
 
       handleTouchStart(event){
+          //The Y position of the touch, relative to the root element
           startY = event.nativeEvent.pageY;
           console.log("handleTouchStart" + startY);
       }
