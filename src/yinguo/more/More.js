@@ -8,10 +8,12 @@
  */
 
 import React,{Component} from 'react';
-import {View, Text, ListView, Image, TouchableOpacity, StyleSheet, PanResponder, Animated} from 'react-native';
+import {View, Text, ListView, Image, TouchableOpacity, StyleSheet, LayoutAnimation, StatusBar} from 'react-native';
 import YinguoToolBar from '../component/YinguoToolBar';
 
 var DATA = {};
+var startY = 0;
+var endY = 0;
 // const DATA = [
 //     {name:'主页', image:require('../../png/yinguo/search.png'), isMain:false, isLast:false, onpress:{}},
 //     {name:'邀请朋友,获取奖金', image:require('../../png/yinguo/friend.png'), isMain:false,isLast:true, onpress:{}},
@@ -37,6 +39,7 @@ var DATA = {};
 // ];
 
 export default class More extends Component{
+
     // 构造
       constructor(props) {
         super(props);
@@ -46,11 +49,13 @@ export default class More extends Component{
                 rowHasChanged: (row1, row2)=> row1 != row2,
                 sectionHeaderHasChanged:(sec1, sec2)=> sec1 != sec2,
             }),
-            isShowToolBar:true,
-            scrollingVelocity:0,
+            shouldShowToolBar:true,
         };
           this.renderRow = this.renderRow.bind(this);
           this.renderSection = this.renderSection.bind(this);
+          this.handleTouchStart = this.handleTouchStart.bind(this);
+          this.handleTouchEnd = this.handleTouchEnd.bind(this);
+          this.showToolBarOrNot = this.showToolBarOrNot.bind(this);
       }
 
     componentWillMount() {
@@ -58,35 +63,6 @@ export default class More extends Component{
     }
 
     componentDidMount() {
-        this._panResponder = PanResponder.create({
-            //要求成为响应者,
-            onStartShouldSetPanResponder:(evt,gestureState) => true,
-            onStartShouldSetPanResponderCapture:(evt,gestureState)=> true,
-            onMoveShouldSetPanResponder:(evt,gestureState) => true,
-            onMoveShouldSetPanResponderCapture:(evt,gestureState) => true,
-
-            onPanResponderGrant:(evt,gestureState)=>{
-                //手势操作开始
-            },
-
-            onPanResponderMove:(evt,gestureState) =>{
-                //最近一次的移动距离为gestureState.move(X,Y)
-                //从成为响应者开始,累计手势移动距离为gestureState.d{X,Y}
-                this.onAnimation();
-                console.log(gestureState.vy);
-            },
-
-            //同时只能有一个responder,强势返回true
-            onPanResponderTerminationRequest:(evt,gestureState) => true,
-
-            onPanResponderRelease:(evt,gestureState) =>{
-                //用户松开了触摸点,此时视图成为了响应者,一般来说一个手势操作已经成功完成
-            },
-            onPanResponderTerminate:(evt,gestureState) =>{
-                //另一个组件成了新的响应者,所以当前手势将被取消,
-            },
-
-        });
     }
 
     //产生数据
@@ -197,20 +173,57 @@ export default class More extends Component{
         }
       }
 
-      render(){
-          return(
-              <Animated.View
-                  style={{flex:1}}
+      handleTouchStart(event){
+          startY = event.nativeEvent.pageY;
+          console.log("handleTouchStart" + startY);
+      }
 
-              >
+      handleTouchEnd(event){
+          endY = event.nativeEvent.pageY;
+          //下滑
+          if (startY > endY){
+              if ((startY-endY)>44){
+                  this.setState({shouldShowToolBar:false});
+                  //不显示状态栏
+                  StatusBar.setHidden(true);
+              }
+          }
+          //上滑
+          else {
+              if ((endY-startY)>44){
+                  this.setState({shouldShowToolBar:true});
+                  //显示状态栏
+                  StatusBar.setHidden(false);
+              }
+          }
+          console.log("handleTouchEnd" + endY);
+      }
+
+      showToolBarOrNot(){
+          if (this.state.shouldShowToolBar){
+              console.log("13");
+              return(
                   <YinguoToolBar type={0}/>
+              );
+          }
+      }
+
+      render(){
+          LayoutAnimation.easeInEaseOut();
+          return(
+              <View
+                  style={{flex:1}}
+                  onTouchStart={this.handleTouchStart}
+                  onTouchEnd={this.handleTouchEnd}
+              >
+                  {this.showToolBarOrNot()}
                   <ListView
                     dataSource={this.state.dataSource.cloneWithRowsAndSections(DATA)}
                     renderRow={this.renderRow}
                     renderSectionHeader={this.renderSection}
                     initialListSize={10}
                   />
-              </Animated.View>
+              </View>
           );
       }
 }

@@ -2,7 +2,7 @@
  * Created by cw on 16/8/31.
  */
 import React,{Component} from 'react';
-import {View, StyleSheet, Dimensions, TouchableOpacity, Image, Text} from 'react-native';
+import {View, StyleSheet, Dimensions, TouchableOpacity, Image, Text,} from 'react-native';
 
 /**
  *toolbar
