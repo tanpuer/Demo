@@ -8,11 +8,12 @@ import TabNavigator from 'react-native-tab-navigator';
 import About from '../menu/About';
 import Home from '../menu/Home';
 import More from '../yinguo/more/More';
+import MoreContainers from '../yinguo/container/MoreContainers';
 
 const tabBarItems = [
     { title: '动态', icon: () => <Image style={{ width: 30, height: 30 }} source={require('../png/icon/home.png')}/>,select_icon: () => <Image style={{ width: 30, height: 30 }} source={require('../png/icon/home_selected.png')}/>, component: Home },
     { title: '好友', icon: () => <Image style={{ width: 30, height: 30 }} source={require('../png/icon/friend.png')}/>,select_icon: () => <Image style={{ width: 30, height: 30 }} source={require('../png/icon/friend_selected.png')}/>, component: About },
-    { title: '更多', icon: () => <Image style={{ width: 30, height: 30 }} source={require('../png/icon/more.png')}/>,select_icon: () => <Image style={{ width: 30, height: 30 }} source={require('../png/icon/more_selected.png')}/>, component: More },
+    { title: '更多', icon: () => <Image style={{ width: 30, height: 30 }} source={require('../png/icon/more.png')}/>,select_icon: () => <Image style={{ width: 30, height: 30 }} source={require('../png/icon/more_selected.png')}/>, component: MoreContainers },
 ];
 
 export default class Iosui extends Component{

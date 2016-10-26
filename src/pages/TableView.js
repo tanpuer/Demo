@@ -10,7 +10,9 @@ import MealTicket from '../CustomizedCom/MealTicket';
 import Waiting from '../animation/WaitingForLunch';
 import Music from '../animation/MusicPan';
 import Gesture from '../animation/Responder';
-import IOSUI from '../component/Iosui';
+// import IOSUI from '../component/Iosui';
+import YinGuo from '../yinguo/YinGuo';
+import LoadingView from '../animation/LoadingAnimation';
 
 const masterWork = [[1,"倒计时",require('../png/screenshots/timer.png'),Timer,"计时器"],
                     [2,"咻一咻",require('../png/screenshots/xiuyixiu.png'),XiuyiXiu,"咻一咻"],
@@ -18,7 +20,9 @@ const masterWork = [[1,"倒计时",require('../png/screenshots/timer.png'),Timer
                     [4,"等餐",require('../png/screenshots/wait.png'),Waiting,"等餐"],
                     [5,"手势",require('../png/screenshots/gesture.png'),Gesture,"手势"],
                     [6,"音乐",require('../png/screenshots/music_pan.png'),Music,"音乐"],
-                    [7,"因果",require('../png/yinguo/eengoo.png'),IOSUI,"IOS"],
+                    // [7,"因果",require('../png/yinguo/eengoo.png'),IOSUI,"IOS"],
+                    [8,"因果Redux",require('../png/yinguo/eengoo.png'),YinGuo,"IOS"],
+                    [9,"Loading",require('../png/loading.png'),LoadingView,"Loading"],
 ];
 
 export default class TableView extends Component{

@@ -8,7 +8,7 @@
  */
 
 import React,{Component} from 'react';
-import {View, Text, ListView, Image, TouchableOpacity, StyleSheet, LayoutAnimation, StatusBar} from 'react-native';
+import {View, Text, ListView, Image, TouchableOpacity, StyleSheet, LayoutAnimation, StatusBar,RefreshControl} from 'react-native';
 import YinguoToolBar from '../component/YinguoToolBar';
 
 var DATA = {};
@@ -50,12 +50,14 @@ export default class More extends Component{
                 sectionHeaderHasChanged:(sec1, sec2)=> sec1 != sec2,
             }),
             shouldShowToolBar:true,
+            refreshing: false,
         };
           this.renderRow = this.renderRow.bind(this);
           this.renderSection = this.renderSection.bind(this);
           this.handleTouchStart = this.handleTouchStart.bind(this);
           this.handleTouchEnd = this.handleTouchEnd.bind(this);
           this.showToolBarOrNot = this.showToolBarOrNot.bind(this);
+          this.onRefresh = this.onRefresh.bind(this);
       }
 
     componentWillMount() {
@@ -64,6 +66,8 @@ export default class More extends Component{
 
     componentDidMount() {
     }
+
+
 
     //产生数据
     makeData(){
@@ -209,6 +213,13 @@ export default class More extends Component{
           }
       }
 
+      onRefresh(){
+          this.setState({refreshing:true});
+          setTimeout(()=>{
+              this.setState({refreshing:false})
+              }, 2000);
+      }
+
       render(){
           LayoutAnimation.easeInEaseOut();
           return(
@@ -223,6 +234,12 @@ export default class More extends Component{
                     renderRow={this.renderRow}
                     renderSectionHeader={this.renderSection}
                     initialListSize={10}
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={this.state.refreshing}
+                            onRefresh={this.onRefresh}
+                        />
+                    }
                   />
               </View>
           );

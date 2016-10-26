@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {AppRegistry, Navigator} from 'react-native';
-import Main from './src/pages/Main';
 import Splash from './src/pages/Splash';
 
 class Demo extends Component{

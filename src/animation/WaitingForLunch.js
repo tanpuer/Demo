@@ -7,8 +7,7 @@ import ToolBar from '../component/HomeToolBar';
 
 
 
-export default class WaitingForLunch extends
-    Component{
+export default class WaitingForLunch extends Component{
     // 构造
       constructor(props) {
         super(props);
