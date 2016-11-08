@@ -2,7 +2,7 @@
  * Created by cw on 16/7/28.
  */
 import React ,{Component} from 'react';
-import {View, Text, Dimensions, Platform, DrawerLayoutAndroid, Image, InteractionManager} from 'react-native';
+import {View, Text, Dimensions, Platform, DrawerLayoutAndroid, Image, InteractionManager, ScrollView} from 'react-native';
 import DrawerLayout from 'react-native-drawer-layout';
 import ScrollTabView ,{DefaultTabBar}from 'react-native-scrollable-tab-view';
 import Android from '../pages/AndroidPager';
@@ -15,6 +15,7 @@ import About from '../menu/About';
 import Blog from '../pages/Blog';
 import TableView from '../pages/TableView';
 
+const WIDTH = Dimensions.get('window').width;
 const drawerWidth = Dimensions.get('window').width / 5 * 4;
 
 class Main extends Component{

@@ -10,6 +10,7 @@ import {
     Image,
     TouchableOpacity,
     ActivityIndicator,
+    RefreshControl,
 } from 'react-native';
 import Article from '../pages/Article';
 
@@ -27,8 +28,10 @@ export default class AndroidPager extends Component{
                 rowHasChanged: (row1,row2) => row1 !== row2,
             }),
             isLoaded: false,
+            freshing:false,
         };
         this.renderMovies = this.renderMovies.bind(this);
+          this.onRefresh = this.onRefresh.bind(this);
       }
 
     componentDidMount() {
@@ -77,6 +80,12 @@ export default class AndroidPager extends Component{
         );
     }
 
+    onRefresh(){
+        this.setState({freshing:true});
+        setTimeout(()=>{
+            this.setState({freshing:false});
+        },2000);
+    }
 
     render(){
           if (!this.state.isLoaded){
@@ -92,6 +101,12 @@ export default class AndroidPager extends Component{
                       style={styles.listView}
                       dataSource={this.state.dataSource}
                       renderRow={this.renderMovies}
+                      refreshControl={
+                          <RefreshControl
+                              refreshing={this.state.freshing}
+                              onRefresh={this.onRefresh}
+                          />
+                      }
                   />
               );
           }
