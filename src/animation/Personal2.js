@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import {
     Dimensions,
     Image,
-    ListView,
     PixelRatio,
     StyleSheet,
     Text,
@@ -13,31 +12,22 @@ import {
     RecyclerViewBackedScrollView,
     TouchableOpacity,
     LayoutAnimation,
+    ScrollView,
 } from 'react-native';
 
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import ScrollTabView ,{DefaultTabBar}from 'react-native-scrollable-tab-view';
-import Blog from '../pages/Blog';
-import TableView from '../pages/TableView';
-import Android from '../pages/AndroidPager';
 
-var DATA1 = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,];
-var DATA2 = [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,];
-var DATA3 = [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,];
-var DATA4 = [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4];
-var DATA5 = [5,5,5,5,5,5,5,5,5,5,5,5,5,5,5];
-var DATA6 = [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6];
-var DATA = DATA1;
+
+
 class Talks extends Component {
     constructor(props) {
         super(props);
         this.state =  {
-            dataSource: new ListView.DataSource({
-                rowHasChanged: (r1, r2) => r1 !== r2
-            }),
             selected:1,
         };
         this.renderHeader = this.renderHeader.bind(this);
+        this.renderText = this.renderText.bind(this);
     }
 
     renderHeader(){
@@ -54,42 +44,36 @@ class Talks extends Component {
                 this.setState({
                     selected:item,
                 });
-                DATA = DATA1;
                 break;
             }
             case 2:{
                 this.setState({
                     selected:item,
                 });
-                DATA = DATA2;
                 break;
             }
             case 3:{
                 this.setState({
                     selected:item,
                 });
-                DATA = DATA3;
                 break;
             }
             case 4:{
                 this.setState({
                     selected:item,
                 });
-                DATA = DATA4;
                 break;
             }
             case 5:{
                 this.setState({
                     selected:item,
                 });
-                DATA = DATA5;
                 break;
             }
             case 6:{
                 this.setState({
                     selected:item,
                 });
-                DATA = DATA6;
                 break;
             }
         }
@@ -99,22 +83,43 @@ class Talks extends Component {
 
     }
 
+    renderText(){
+        var text;
+        switch (this.state.selected){
+            case 1:
+                text = 111111;
+                break;
+            case 2:
+                text = 222222;
+                break;
+            case 3:
+                text = 333333;
+                break;
+            case 4:
+                text = 444444;
+                break;
+            case 5:
+                text = 555555;
+                break;
+            case 6:
+                text = 666666;
+                break;
+            default:
+                break;
+        }
+        return(
+            <View style={{flex:1}}>
+                <Text>
+                    {text}
+                </Text>
+            </View>
+        )
+    }
+
     render() {
         const { onScroll = () => {} } = this.props;
         return (
-            <ListView
-                ref="ListView"
-                style={styles.container}
-                dataSource={ this.state.dataSource.cloneWithRows(DATA) }
-                renderRow={(rowData) => (
-                    <View key={rowData} style={ styles.row }>
-                        <Text style={ styles.rowText }>
-                            { rowData }
-                        </Text>
-                    </View>
-                )}
 
-                renderScrollComponent={props => (
                     <ParallaxScrollView
                         onScroll={onScroll}
 
@@ -141,7 +146,7 @@ class Talks extends Component {
 
                         renderStickyHeader={() => (
 
-                            <View key="sticky-header" style={styles.stickySection}>
+                            <ScrollView key="sticky-header" contentContainerStyle={styles.stickySection}>
                                 <TouchableOpacity style={{flex:1,marginLeft:3,justifyContent:'center',alignItems:"center",borderBottomWidth:3,borderBottomColor:this.state.selected ==1?'red':'white'}}
                                                   onPress={()=>this.onPress(1)}>
                                     <Text style={{color:this.state.selected==1?'red':'black'}}>首页</Text>
@@ -166,22 +171,28 @@ class Talks extends Component {
                                                   onPress={()=>this.onPress(6)}>
                                     <Text style={{color:this.state.selected==6?'red':'black'}}>相册</Text>
                                 </TouchableOpacity>
-                            </View>
+                            </ScrollView>
                         )}
 
                         /**
-                        renderFixedHeader={() => (
-                            <View key="fixed-header" style={styles.fixedSection}>
-                                <Text style={styles.fixedSectionText}
-                                      onPress={() => this.refs.ListView.scrollTo({ x: 0, y: 0 })}>
-                                    Scroll to top
-                                </Text>
-                            </View>
-                        )}
-                        **/
-                    />
-                )}
-            />
+                         renderFixedHeader={() => (
+                         <View key="fixed-header" style={styles.fixedSection}>
+                         <Text style={styles.fixedSectionText}
+                         onPress={() => this.refs.ListView.scrollTo({ x: 0, y: 0 })}>
+                         Scroll to top
+                         </Text>
+                         </View>
+                         )}
+                         **/
+                    >
+                        <ScrollView style={{flex:1,height:1400}}>
+                            <Text style={{marginTop:100}}> 一共六个页面</Text>
+                            <Text style={{marginTop:100}}>点击之后切换</Text>
+                            {this.renderText()}
+                        </ScrollView>
+
+                    </ParallaxScrollView>
+
         );
     }
 }
@@ -207,7 +218,8 @@ const styles = StyleSheet.create({
     },
     stickySection: {
         height: STICKY_HEADER_HEIGHT-20,
-        width: window.width,
+        //sketch上是个scrollview
+        width: window.width+50,
         justifyContent: 'center',
         flexDirection:"row",
         marginTop:20,

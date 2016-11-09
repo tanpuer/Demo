@@ -87,6 +87,10 @@ export default class AndroidPager extends Component{
         },2000);
     }
 
+    onLayout(){
+
+    }
+
     render(){
           if (!this.state.isLoaded){
               return(

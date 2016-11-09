@@ -62,6 +62,7 @@ export default class More extends Component{
 
     componentWillMount() {
         DATA = this.makeData();
+        console.log(DATA);
     }
 
     componentDidMount() {

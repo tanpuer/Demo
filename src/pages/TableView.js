@@ -14,6 +14,8 @@ import Gesture from '../animation/Responder';
 import YinGuo from '../yinguo/YinGuo';
 import LoadingView from '../animation/LoadingAnimation';
 import Personal from '../animation/Personal';
+import Personal2 from '../animation/Personal2';
+import Personal3 from '../animation/Personal3';
 
 const masterWork = [[1,"倒计时",require('../png/screenshots/timer.png'),Timer,"计时器"],
                     [2,"咻一咻",require('../png/screenshots/xiuyixiu.png'),XiuyiXiu,"咻一咻"],
@@ -24,7 +26,9 @@ const masterWork = [[1,"倒计时",require('../png/screenshots/timer.png'),Timer
                     // [7,"因果",require('../png/yinguo/eengoo.png'),IOSUI,"IOS"],
                     [8,"因果Redux",require('../png/yinguo/eengoo.png'),YinGuo,"IOS"],
                     [9,"Loading",require('../png/loading.png'),LoadingView,"Loading"],
-                    [9,"Personal",require('../png/loading.png'),Personal,"Personal"],
+                    [10,"Personal-ListView",require('../png/loading.png'),Personal,"Personal"],
+                    [11,"Personal-ScrollView",require('../png/loading.png'),Personal2,"Personal"],
+                    [12,"Personal-Sketch",require('../png/loading.png'),Personal3,"Personal"],
 ];
 
 export default class TableView extends Component{

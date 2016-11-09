@@ -133,7 +133,7 @@ class Main extends Component{
                         <Android tabLabel = "知乎热门" navigator={this.props.navigator}/>
 
                         <Blog tabLabel = "我的博客"/>
-                        <TableView tabLabel="RN小项目" navigator={this.props.navigator}/>
+                        <TableView tabLabel="RN" navigator={this.props.navigator}/>
 
                     </ScrollTabView>
                 </View>
