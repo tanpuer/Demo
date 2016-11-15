@@ -2,9 +2,9 @@
  * Created by cw on 16/7/28.
  */
 import React ,{Component} from 'react';
-import {View, Text, Dimensions, Platform, DrawerLayoutAndroid, Image, InteractionManager, ScrollView} from 'react-native';
+import {View, Text, Dimensions, Platform, DrawerLayoutAndroid, Image, InteractionManager, ScrollView, Animated} from 'react-native';
 import DrawerLayout from 'react-native-drawer-layout';
-import ScrollTabView ,{DefaultTabBar}from 'react-native-scrollable-tab-view';
+import ScrollTabView ,{DefaultTabBar,ScrollableTabBar}from 'react-native-scrollable-tab-view';
 import Android from '../pages/AndroidPager';
 import Ad from '../pages/AdPager';
 import HomeToolBar from '../component/HomeToolBar';
@@ -14,6 +14,9 @@ import Suggestion from '../menu/Suggestion';
 import About from '../menu/About';
 import Blog from '../pages/Blog';
 import TableView from '../pages/TableView';
+import Personal3 from '../animation/Personal3';
+import More from '../yinguo/more/More';
+import ListContainer from '../f8/common/ListContainer';
 
 const WIDTH = Dimensions.get('window').width;
 const drawerWidth = Dimensions.get('window').width / 5 * 4;
@@ -111,7 +114,8 @@ class Main extends Component{
                 drawerPosition={Platform.OS === 'android' ? DrawerLayoutAndroid.positions.Left : 'left'}
                 renderNavigationView={this.renderNavigationView}
             >
-                <View style={{flex:1}}>
+                <View
+                    style={{flex:1}}>
                     <HomeToolBar
                         onPress={this.openDrawer}
                         title="安卓"
@@ -119,7 +123,7 @@ class Main extends Component{
                     />
                     <ScrollTabView
                         renderTabBar = {()=>
-                            <DefaultTabBar
+                            <ScrollableTabBar
                                 underlineHeight={4}
                                 textStyle={{fontSize:16,marginTop:10}}
                             />
@@ -134,7 +138,7 @@ class Main extends Component{
 
                         <Blog tabLabel = "我的博客"/>
                         <TableView tabLabel="RN" navigator={this.props.navigator}/>
-
+                        <More tabLabel="RN2"/>
                     </ScrollTabView>
                 </View>
             </DrawerLayout>
