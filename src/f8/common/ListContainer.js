@@ -71,12 +71,12 @@ const ActivityIndicator = Platform.OS === 'ios'
   ? ActivityIndicatorIOS
   : ProgressBarAndroid;
 
-var Relay = require('react-relay');
-var RelayRenderer = require('react-relay/lib/RelayRenderer.js');
+// var Relay = require('react-relay');
+// var RelayRenderer = require('react-relay/lib/RelayRenderer.js');
 
-class MainRoute extends Relay.Route {}
-MainRoute.queries = { viewer: () => Relay.QL`query { viewer }` };
-MainRoute.routeName = 'MainRoute';
+//class MainRoute extends Relay.Route {}
+// MainRoute.queries = { viewer: () => Relay.QL`query { viewer }` };
+// MainRoute.routeName = 'MainRoute';
 
 class RelayLoading extends React.Component {
   render() {
@@ -87,8 +87,8 @@ class RelayLoading extends React.Component {
     return (
       <RelayRenderer
         Container={child.type}
-        queryConfig={new MainRoute()}
-        environment={Relay.Store}
+        //queryConfig={new MainRoute()}
+        //environment={Relay.Store}
         render={({props}) => this.renderChild(child, props)}
       />
     );

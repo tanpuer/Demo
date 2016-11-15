@@ -57,6 +57,7 @@ class ScheduleListView extends React.Component {
           dataSource= {this.state.dataSource.cloneWithRows(data)}
           renderRow={this.renderRow}
           {...(this.props: any /* flow can't guarantee the shape of props */)}
+          onTouchMove={(e)=>{console.log("111111",e.nativeEvent)}}
       />
     );
   }

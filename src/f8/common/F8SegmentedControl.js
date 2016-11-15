@@ -53,7 +53,7 @@ class F8SegmentedControl extends React.Component {
       )
     );
     return (
-      <View style={[styles.container, this.props.style]} >
+      <View style={[styles.container, this.props.style]}>
         {segments}
       </View>
     );
