@@ -102,6 +102,7 @@ export default class AndroidPager extends Component{
           }else {
               return(
                   <ListView
+                      ref="Android_ListView"
                       style={styles.listView}
                       dataSource={this.state.dataSource}
                       renderRow={this.renderMovies}
@@ -111,6 +112,7 @@ export default class AndroidPager extends Component{
                               onRefresh={this.onRefresh}
                           />
                       }
+                      scrollEnabled={this.props.scrollEnabled}
                   />
               );
           }

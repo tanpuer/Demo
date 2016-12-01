@@ -33,6 +33,7 @@ var View = require('View');
 var Image = require('Image');
 var Dimensions = require('Dimensions');
 var Text =require('Text');
+var TouchableOpacity = require('TouchableOpacity');
 
 // TODO: Remove this magic numbers
 const HEIGHT = Dimensions.get('window').height > 600
@@ -130,15 +131,25 @@ class ParallaxBackground extends React.Component {
     // cw 不让背景图片左右滑动, 会出现露白
     const transforms = { transform: [{translateY}, {scale}] };
     return (
-      <Animated.View style={[transforms,{width:SCREEN_WIDTH,height:400}]}>
-        <Animated.Image
-            source={backgroundImage}
-            style={{width:SCREEN_WIDTH,height:240}}
-        />
-        <Text>个人简介</Text>
-        <Text>我的运动</Text>
-        <Text>谁看过我的主页</Text>
-      </Animated.View>
+        <Animated.View style={[transforms,{width:SCREEN_WIDTH,height:400,zIndex:3}]}>
+          <TouchableOpacity onPress={()=>alert("点击了我的封面")}>
+            <Animated.Image
+                source={backgroundImage}
+                style={{width:SCREEN_WIDTH,height:240}}
+            />
+          </TouchableOpacity>
+          <View>
+            <TouchableOpacity onPress={()=>alert("点击了个人简介")} style={{zIndex:4}}>
+              <Text>个人简介</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>alert("点击了我的运动")} style={{zIndex:4}}>
+              <Text>我的运动</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>alert("点击了我的主页")} style={{zIndex:4}}>
+              <Text>谁看过我的主页</Text>
+            </TouchableOpacity>
+          </View>
+        </Animated.View>
     );
     // return (
     //     <Animated.Image

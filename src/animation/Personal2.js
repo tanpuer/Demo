@@ -130,18 +130,22 @@ class Talks extends Component {
                         backgroundColor="white"
 
                         renderBackground={() => (
+                            <TouchableOpacity onPress={()=>alert("123")}>
                             <View key="background">
-                                <Image
-                                    style={{width: window.width,height: PARALLAX_HEADER_HEIGHT-40}}
-                                    source={require('../png/drawer.jpg')}
-                                />
+
+                                    <Image
+                                        style={{width: window.width,height: PARALLAX_HEADER_HEIGHT-40}}
+                                        source={require('../png/drawer.jpg')}
+                                    />
                                 <Text>
                                     个人资料完成度 80%
                                 </Text>
                                 <Text>
                                     这是个人主页
                                 </Text>
+
                             </View>
+                                </TouchableOpacity>
                         )}
 
                         renderStickyHeader={() => (

@@ -38,6 +38,7 @@ var View = require('View');
 var { Text } = require('F8Text');
 var ViewPager = require('./ViewPager');
 var Platform = require('Platform');
+var TouchableOpacity = require('TouchableOpacity');
 
 import type {Item as HeaderItem} from 'F8Header';
 
@@ -189,16 +190,18 @@ class ListContainer extends React.Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.headerWrapper}>
-          <ParallaxBackground
-            minHeight={this.state.stickyHeaderHeight + F8Header.height}
-            maxHeight={EMPTY_CELL_HEIGHT + this.state.stickyHeaderHeight + F8Header.height}
-            offset={this.state.anim}
-            backgroundImage={this.props.backgroundImage}
-            backgroundShift={backgroundShift}
-            backgroundColor={this.props.backgroundColor}>
-            {this.renderParallaxContent()}
-          </ParallaxBackground>
+        <View style={[styles.headerWrapper,{zIndex:2}]}>
+            <View style={{zIndex:1}}>
+              <ParallaxBackground
+                  minHeight={this.state.stickyHeaderHeight + F8Header.height}
+                  maxHeight={EMPTY_CELL_HEIGHT + this.state.stickyHeaderHeight + F8Header.height}
+                  offset={this.state.anim}
+                  backgroundImage={this.props.backgroundImage}
+                  backgroundShift={backgroundShift}
+                  backgroundColor={this.props.backgroundColor}>
+                {this.renderParallaxContent()}
+              </ParallaxBackground>
+            </View>
           <F8Header
             title={this.props.title}
             leftItem={leftItem}
@@ -209,9 +212,9 @@ class ListContainer extends React.Component {
           {this.renderFixedStickyHeader(stickyHeader)}
         </View>
         <ViewPager
-          count={segments.length}
-          selectedIndex={this.state.idx}
-          onSelectedIndexChange={this.handleSelectSegment}>
+            count={segments.length}
+            selectedIndex={this.state.idx}
+            onSelectedIndexChange={this.handleSelectSegment}>
           {content}
         </ViewPager>
         {this.renderFloatingStickyHeader(stickyHeader)}
