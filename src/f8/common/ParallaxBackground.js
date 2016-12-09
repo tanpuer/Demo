@@ -136,6 +136,7 @@ class ParallaxBackground extends React.Component {
             <Animated.Image
                 source={backgroundImage}
                 style={{width:SCREEN_WIDTH,height:240}}
+                resizeMode="stretch"
             />
           </TouchableOpacity>
           <View>
