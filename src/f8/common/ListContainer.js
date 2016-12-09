@@ -320,7 +320,7 @@ class ListContainer extends React.Component {
   }
 
   handleStickyHeaderLayout({nativeEvent: { layout, target }}: any) {
-    this.setState({stickyHeaderHeight: layout.height-50});
+    this.setState({stickyHeaderHeight: layout.height-60});
   }
 
   componentWillReceiveProps(nextProps: Props) {

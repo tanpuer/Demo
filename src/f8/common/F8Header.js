@@ -34,6 +34,7 @@ var TouchableOpacity = require('TouchableOpacity');
 var View = require('View');
 var Image = require('Image');
 var ToolbarAndroid = require('ToolbarAndroid');
+var Dimensions = require('Dimensions');
 
 export type Layout =
     'default'      // Use platform defaults (icon on Android, text on iOS)
@@ -138,6 +139,7 @@ class F8HeaderIOS extends React.Component {
       : this.props.children;
     return (
       <View style={[styles.header, this.props.style]}>
+        <View style={{width:Dimensions.get('window').width,backgroundColor:'red',position:'absolute',top:0,height:20}}></View>
         <View style={styles.leftItem}>
           <ItemWrapperIOS color={itemsColor} item={leftItem} />
         </View>

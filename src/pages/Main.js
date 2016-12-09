@@ -15,9 +15,7 @@ import Suggestion from '../menu/Suggestion';
 import About from '../menu/About';
 import Blog from '../pages/Blog';
 import TableView from '../pages/TableView';
-import Personal3 from '../animation/Personal3';
 import More from '../yinguo/more/More';
-import ListContainer from '../f8/common/ListContainer';
 import ScrollTabBar from '../component/ScrollTabBar';
 
 const WIDTH = Dimensions.get('window').width;
@@ -148,60 +146,36 @@ class Main extends Component{
             >
                 {/*{this.state.listViewCanScroll == true ? <View style={{height:40,position:'absolute',top:0,overflow:'visible'}}><Text>1111</Text></View> : <View></View>}*/}
 
+                <HomeToolBar
+                    onPress={this.openDrawer}
+                    title="安卓"
+                    source={require('../png/menu.png')}
+                />
 
-                {this.state.listViewCanScroll == true ?
-                    <View style={{zIndex:1}}>
-                        <ScrollTabBar tabs={["知乎热门","我的博客","RN","RN2"]} selectedTab={0}/>
-                    </View>
-                    :
-                    <View></View>
-                }
+                <View
+                    style={{flex:1}}
+                >
 
-
-
-                <ScrollView
-                    ref="scrollView"
-                    onScroll ={(event)=>{this.onScroll(event)}}
-                    scrollEventThrottle = {1}
-                    scrollEnabled={true}
+                    <ScrollTabView
+                        renderTabBar = {()=>
+                            <ScrollableTabBar
+                                underlineHeight={4}
+                                textStyle={{fontSize:16,marginTop:10}}
+                            />
+                        }
+                        tabBarUnderlineColor = 'darkgoldenrod'
+                        tabBarBackgroundColor = 'wheat'
+                        tabBarActiveTextColor = 'darkgoldenrod'
+                        tabBarInactiveTextColor = 'gray'
+                        navigator = {navigator}
                     >
-                    <HomeToolBar
-                        onPress={this.openDrawer}
-                        title="安卓"
-                        source={require('../png/menu.png')}
-                    />
-                    <View style={{height:200}}>
-                        <Image source={require('../png/tiger.jpg')} style={{height:200,width:WIDTH}}/>
-                    </View>
+                        <Android tabLabel = "知乎热门" navigator={this.props.navigator} />
 
-
-
-
-                    <View
-                        style={{flex:1}}
-                    >
-
-                        <ScrollTabView
-                            renderTabBar = {()=>
-                                <ScrollableTabBar
-                                    underlineHeight={4}
-                                    textStyle={{fontSize:16,marginTop:10}}
-                                />
-                            }
-                            tabBarUnderlineColor = 'darkgoldenrod'
-                            tabBarBackgroundColor = 'wheat'
-                            tabBarActiveTextColor = 'darkgoldenrod'
-                            tabBarInactiveTextColor = 'gray'
-                            navigator = {navigator}
-                        >
-                            <Android tabLabel = "知乎热门" navigator={this.props.navigator} scrollEnabled={false}/>
-
-                            <Blog tabLabel = "我的博客"/>
-                            <TableView tabLabel="RN" navigator={this.props.navigator}/>
-                            <More tabLabel="RN2"/>
-                        </ScrollTabView>
-                    </View>
-                </ScrollView>
+                        <Blog tabLabel = "我的博客"/>
+                        <TableView tabLabel="RN" navigator={this.props.navigator}/>
+                        <More tabLabel="RN2"/>
+                    </ScrollTabView>
+                </View>
             </DrawerLayout>
         );
     }
