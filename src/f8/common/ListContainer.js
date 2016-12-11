@@ -66,10 +66,10 @@ type State = {
 // const EMPTY_CELL_HEIGHT = Dimensions.get('window').height > 600 ? 200 : 150;
 const EMPTY_CELL_HEIGHT = 250;
 
-var ActivityIndicatorIOS = require('ActivityIndicatorIOS');
+var ActivityIndicator = require('ActivityIndicator');
 var ProgressBarAndroid = require('ProgressBarAndroid');
 const ActivityIndicator = Platform.OS === 'ios'
-  ? ActivityIndicatorIOS
+  ? ActivityIndicator
   : ProgressBarAndroid;
 
 // var Relay = require('react-relay');
