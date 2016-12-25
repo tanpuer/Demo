@@ -107,6 +107,7 @@ export default class Blog extends Component{
       renderItems(i){
           return(
               <TouchableOpacity
+                  key={i}
                   style={{flex:1,height:100,}}
                   onPress={()=>{this.onItemPress(i)}}
               >
