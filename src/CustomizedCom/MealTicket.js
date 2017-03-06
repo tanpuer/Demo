@@ -48,8 +48,8 @@ export default class MeatTicket extends Component{
                         style={{width:60,height:60,marginLeft:20}}
                         source={require('../png/hanbaobao.jpg')}
                     />
-                    <View style={{flexDirection:'column', marginLeft:20,}}>
-                        <Text style={{fontSize:20}}>饭票</Text>
+                    <View style={{flexDirection:'column', marginLeft:20}}>
+                        <Text style={{fontSize:20, width:80}}>饭票</Text>
                         <Text style={{fontSize:10}}>编号:111111</Text>
                         <Text style={{fontSize:10}}>截止日期:2017-1-1</Text>
                     </View>

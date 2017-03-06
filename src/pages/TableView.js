@@ -25,7 +25,7 @@ const masterWork = [[1,"倒计时",require('../png/screenshots/timer.png'),Timer
                     [6,"音乐",require('../png/screenshots/music_pan.png'),Music,"音乐"],
                     // [7,"因果",require('../png/yinguo/eengoo.png'),IOSUI,"IOS"],
                     [8,"因果Redux",require('../png/yinguo/eengoo.png'),YinGuo,"IOS"],
-                    [9,"Loading",require('../png/loading.png'),LoadingView,"Loading"],
+                    // [9,"Loading",require('../png/loading.png'),LoadingView,"Loading"],
                     [10,"Personal-ListView",require('../png/loading.png'),Personal,"Personal"],
                     [11,"Personal-ScrollView",require('../png/loading.png'),Personal2,"Personal"],
                     [12,"Personal-Sketch",require('../png/loading.png'),Personal3,"Personal"],
