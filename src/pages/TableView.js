@@ -17,6 +17,7 @@ import Personal from '../animation/Personal';
 import Personal2 from '../animation/Personal2';
 import Personal3 from '../animation/Personal3';
 import Login from '../animation/LoginComponent';
+import SwipableTest from '../animation/SwipableTest';
 
 const masterWork = [[1,"倒计时",require('../png/screenshots/timer.png'),Timer,"计时器"],
                     [2,"咻一咻",require('../png/screenshots/xiuyixiu.png'),XiuyiXiu,"咻一咻"],
@@ -31,6 +32,7 @@ const masterWork = [[1,"倒计时",require('../png/screenshots/timer.png'),Timer
                     [11,"Personal-ScrollView",require('../png/loading.png'),Personal2,"Personal"],
                     [12,"Personal-Sketch",require('../png/loading.png'),Personal3,"Personal"],
                     [13,"Personal-Login",require('../png/loading.png'),Login,"Login"],
+                    [14,"Swipable-Test",require('../png/loading.png'),SwipableTest,"Swipable"],
 ];
 
 export default class TableView extends Component{
@@ -77,6 +79,7 @@ export default class TableView extends Component{
                     dataSource={this.state.dataSource.cloneWithRows(masterWork)}
                     renderRow={this.renderRow}
                     contentContainerStyle={styles.list}
+                    initialListSize={masterWork.length}
                 />
 
           );
