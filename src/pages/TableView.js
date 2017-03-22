@@ -16,6 +16,7 @@ import LoadingView from '../animation/LoadingAnimation';
 import Personal from '../animation/Personal';
 import Personal2 from '../animation/Personal2';
 import Personal3 from '../animation/Personal3';
+import Login from '../animation/LoginComponent';
 
 const masterWork = [[1,"倒计时",require('../png/screenshots/timer.png'),Timer,"计时器"],
                     [2,"咻一咻",require('../png/screenshots/xiuyixiu.png'),XiuyiXiu,"咻一咻"],
@@ -29,6 +30,7 @@ const masterWork = [[1,"倒计时",require('../png/screenshots/timer.png'),Timer
                     [10,"Personal-ListView",require('../png/loading.png'),Personal,"Personal"],
                     [11,"Personal-ScrollView",require('../png/loading.png'),Personal2,"Personal"],
                     [12,"Personal-Sketch",require('../png/loading.png'),Personal3,"Personal"],
+                    [13,"Personal-Login",require('../png/loading.png'),Login,"Login"],
 ];
 
 export default class TableView extends Component{
